@@ -1,0 +1,191 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/players/new_jeanne_2.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://sound/fx/slash.mp3" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11, 2.625 )
+
+[sub_resource type="RectangleShape2D" id=120]
+extents = Vector2( 10.3379, 48.4858 )
+
+[sub_resource type="Animation" id=115]
+resource_name = "Attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("NewJeanne:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_gettingHit"
+}, {
+"args": [  ],
+"method": "wait_atk_finished"
+} ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("FX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=119]
+resource_name = "Dash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("NewJeanne:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 26, 28, 30, 32, 34 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_col"
+}, {
+"args": [  ],
+"method": "start_iframe"
+}, {
+"args": [  ],
+"method": "end_iframe"
+}, {
+"args": [  ],
+"method": "end_col"
+}, {
+"args": [  ],
+"method": "wait_dash_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=117]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("NewJeanne:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
+}
+
+[sub_resource type="Animation" id=116]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("NewJeanne:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=118]
+resource_name = "Walk"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("NewJeanne:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 36, 37, 38, 39, 40, 41, 42, 43, 44, 45 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, 6 )
+scale = Vector2( 2, 2 )
+collision_layer = 6
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="NewJeanne" type="Sprite" parent="."]
+position = Vector2( 5, -38.5 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+flip_h = true
+hframes = 46
+frame = 1
+
+[node name="Col" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2( 0, 1 )
+rotation = 3.14159
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="AttackAreaShape" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2( -27.25, 0.189836 )
+rotation = 1.5708
+scale = Vector2( 0.56202, 0.56202 )
+shape = SubResource( 120 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 115 )
+anims/Dash = SubResource( 119 )
+anims/Idle = SubResource( 117 )
+anims/RESET = SubResource( 116 )
+anims/Walk = SubResource( 118 )
+
+[node name="FX" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]

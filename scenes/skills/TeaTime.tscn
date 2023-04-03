@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/skills/teatime_effect.png" type="Texture" id=1]
+[ext_resource path="res://scripts/skills/TeaTime.gd" type="Script" id=2]
+[ext_resource path="res://sound/fx/Sound/SoundFX/TeaTime.mp3" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Active"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../FX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[node name="TeaTime" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TeatimeEffect" type="Sprite" parent="."]
+position = Vector2( 0, -19 )
+scale = Vector2( 1.13542, 1.13542 )
+texture = ExtResource( 1 )
+hframes = 5
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TeatimeEffect")
+anims/Active = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="FX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+autoplay = true

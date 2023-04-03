@@ -1,0 +1,201 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://sprites/Envi/Screenshot 2023-03-19 211119.png" type="Texture" id=1]
+[ext_resource path="res://sound/bgm/Ghostrifter-Official-Resurgence.mp3" type="AudioStream" id=2]
+[ext_resource path="res://scenes/menu/Pause.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/PlayerHP.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/PlayerSkillSlot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/world/World.gd" type="Script" id=16]
+[ext_resource path="res://scenes/Boss3.tscn" type="PackedScene" id=17]
+
+[sub_resource type="TileSet" id=6]
+0/name = "Screenshot 2023-03-19 211119.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 896, 480 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Screenshot 2023-03-19 211119.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 480, 896, 448 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 21.75, 391.75 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 543.75, 10.875 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 89, 159.25 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 159.5, 330 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 191, 147.25 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 553.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 31.25, 197.5 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 12.75, 210 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 128.875, 43 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 144.5, 29 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 21.5, 27.75 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 16.5, 49 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 75, 111.5 )
+
+[node name="World" type="Node2D"]
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1131.0 ],
+"_edit_vertical_guides_": [ 1131.0 ]
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( -4.76837e-07, -3.05176e-05 )
+scale = Vector2( 1.26111, 1.26111 )
+tile_set = SubResource( 6 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 458752, 1, 0 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="PlayerHP" parent="UI" instance=ExtResource( 4 )]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource( 3 )]
+
+[node name="SkillSlot" parent="UI" instance=ExtResource( 5 )]
+margin_left = -71.0
+margin_top = 349.0
+margin_right = -71.0
+margin_bottom = 349.0
+rect_scale = Vector2( 0.500724, 0.500724 )
+
+[node name="MainSort" type="YSort" parent="."]
+
+[node name="Characters" type="YSort" parent="MainSort"]
+
+[node name="Player" parent="MainSort/Characters" instance=ExtResource( 6 )]
+position = Vector2( 201, 934 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="MainSort/Characters/Player"]
+remote_path = NodePath("../../../../Camera2D")
+
+[node name="Boss" parent="MainSort/Characters" instance=ExtResource( 17 )]
+position = Vector2( 840, 177 )
+
+[node name="Collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 1106, 734 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 25, 734 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 587.25, 1137.13 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 1031, 804.25 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 662.5, 625 )
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 930, 408.75 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 567, 129 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 4, 197 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 1142, 211 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 539.125, 140 )
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 196.5, 905 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 470.5, 903.75 )
+shape = SubResource( 16 )
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 469.5, 722 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 124, 453.5 )
+shape = SubResource( 19 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -7.0
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 201, 934 )
+scale = Vector2( 2, 2 )
+current = true
+zoom = Vector2( 0.8, 0.8 )
+limit_left = 0
+limit_top = 0
+limit_right = 1131
+limit_bottom = 1131
+limit_smoothed = true
+
+[connection signal="atk" from="MainSort/Characters/Player" to="MainSort/Characters/Boss" method="_on_Player_atk"]
+[connection signal="defeated" from="MainSort/Characters/Player" to="." method="_on_Player_defeated"]
+[connection signal="hit" from="MainSort/Characters/Player" to="UI/PlayerHP" method="_on_Player_hit"]
+[connection signal="position_broadcast" from="MainSort/Characters/Player" to="MainSort/Characters/Boss" method="_on_Player_position_broadcast"]
+[connection signal="atk" from="MainSort/Characters/Boss" to="MainSort/Characters/Player" method="_on_Boss_atk"]
+[connection signal="defeated" from="MainSort/Characters/Boss" to="." method="_on_Boss_defeated"]

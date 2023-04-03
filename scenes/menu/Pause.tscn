@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/knight-vision-font/KnightVision-p7Ezy.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/world/Pause.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 49
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=4]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 1 )
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.152941, 0.152941, 0.152941, 0.392157 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 362.0
+margin_top = 210.0
+margin_right = 662.0
+margin_bottom = 389.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 53.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center] Paused"
+text = " Paused"
+fit_content_height = true
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 57.0
+margin_right = 300.0
+margin_bottom = 71.0
+
+[node name="Resumebtn" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 75.0
+margin_right = 300.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 300, 50 )
+custom_fonts/font = SubResource( 2 )
+shortcut = SubResource( 5 )
+text = "Resume"
+
+[node name="BacktoMenubtn" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 129.0
+margin_right = 300.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 300, 50 )
+custom_fonts/font = SubResource( 3 )
+text = "Back to menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Resumebtn" to="." method="_on_Resumebtn_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BacktoMenubtn" to="." method="_on_BacktoMenubtn_pressed"]

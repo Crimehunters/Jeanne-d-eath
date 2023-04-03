@@ -1,0 +1,211 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scripts/world/Lore.gd" type="Script" id=1]
+[ext_resource path="res://sprites/menubg.png" type="Texture" id=2]
+[ext_resource path="res://sprites/832-8326155_fog.png" type="Texture" id=3]
+[ext_resource path="res://scripts/world/MainMenuPB.gd" type="Script" id=4]
+[ext_resource path="res://fonts/knight-vision-font/KnightVision-p7Ezy.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://sound/bgm/strange-signals-118257.mp3" type="AudioStream" id=6]
+[ext_resource path="res://fonts/CONSOLA.TTF" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 29
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+font_data = ExtResource( 5 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[node name="Lore" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.509804 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 162.0
+margin_top = 53.0
+margin_right = 862.0
+margin_bottom = 547.0
+custom_constants/separation = 20
+
+[node name="Title" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+margin_right = 700.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+
+[node name="Lore" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+margin_top = 80.0
+margin_right = 700.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 700, 300 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "
+
+
+
+
+
+[center]The castle still not breachable, Jeanne searches for an alternative way to enter the castle. 
+
+
+
+
+Below the bridge there is a broken sewer gate. 
+
+
+
+
+
+With no other option, Jeanne decided to go into the sewer.
+
+
+
+
+
+
+A while into the darkness, Jeanne felt a rumbling under her feet. 
+
+
+
+
+
+From the dark corner of the sewage, A giant rat appeared.
+
+
+
+
+
+
+It’s a roaring menace showing that it owns this sewer.
+
+
+
+
+
+
+
+Jeanne tries to avoid it, but the sewer is very narrow. Luckily, Jeanne saw a path leading inside the castle. 
+
+
+
+
+
+Now she must slay this beast to clear the way.
+
+
+"
+text = "
+
+
+
+
+
+The castle still not breachable, Jeanne searches for an alternative way to enter the castle. 
+
+
+
+
+Below the bridge there is a broken sewer gate. 
+
+
+
+
+
+With no other option, Jeanne decided to go into the sewer.
+
+
+
+
+
+
+A while into the darkness, Jeanne felt a rumbling under her feet. 
+
+
+
+
+
+From the dark corner of the sewage, A giant rat appeared.
+
+
+
+
+
+
+It’s a roaring menace showing that it owns this sewer.
+
+
+
+
+
+
+
+Jeanne tries to avoid it, but the sewer is very narrow. Luckily, Jeanne saw a path leading inside the castle. 
+
+
+
+
+
+Now she must slay this beast to clear the way.
+
+
+"
+scroll_active = false
+
+[node name="Space" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 400.0
+margin_right = 700.0
+margin_bottom = 414.0
+
+[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 434.0
+margin_right = 700.0
+margin_bottom = 494.0
+rect_min_size = Vector2( 500, 60 )
+custom_fonts/font = SubResource( 2 )
+shortcut = SubResource( 4 )
+text = "Press SPACE to skip"
+
+[node name="PB" type="ParallaxBackground" parent="."]
+script = ExtResource( 4 )
+
+[node name="Menubg" type="Sprite" parent="PB"]
+position = Vector2( 567.778, 316.75 )
+scale = Vector2( 0.600463, 0.600463 )
+texture = ExtResource( 2 )
+
+[node name="Fog" type="ParallaxLayer" parent="PB"]
+motion_mirroring = Vector2( 1868, 0 )
+
+[node name="FogSprite" type="Sprite" parent="PB/Fog"]
+modulate = Color( 1, 1, 1, 0.388235 )
+position = Vector2( 806, 642 )
+texture = ExtResource( 3 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+autoplay = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]

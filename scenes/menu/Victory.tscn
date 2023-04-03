@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://fonts/knight-vision-font/KnightVision-p7Ezy.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://sprites/skills/SkillFrame.png" type="Texture" id=2]
+[ext_resource path="res://scripts/world/Victory.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=7]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=9]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
+
+[node name="Victory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.431373 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 241.0
+margin_top = 91.0
+margin_right = 783.0
+margin_bottom = 508.0
+custom_constants/separation = 10
+
+[node name="VictoryLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+margin_right = 542.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 400, 66 )
+custom_fonts/bold_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][b]Victory"
+text = "Victory"
+
+[node name="ObtainableLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 542.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 100, 30 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]Obtained a random skill from boss"
+text = "Obtained a random skill from boss"
+
+[node name="Space" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 116.0
+margin_right = 542.0
+margin_bottom = 130.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 542.0
+margin_bottom = 273.0
+custom_constants/separation = 20
+
+[node name="SkillObtainFrame" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Skill" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer/SkillObtainFrame"]
+show_behind_parent = true
+margin_left = 17.0
+margin_top = 19.0
+margin_right = 155.0
+margin_bottom = 157.0
+rect_scale = Vector2( 0.695347, 0.695347 )
+expand = true
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 148.0
+margin_top = 41.0
+margin_right = 178.0
+margin_bottom = 91.0
+rect_min_size = Vector2( 30, 50 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 198.0
+margin_right = 542.0
+margin_bottom = 133.0
+
+[node name="SkillTitle" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 344.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 176, 29 )
+custom_fonts/bold_font = SubResource( 5 )
+bbcode_enabled = true
+
+[node name="SkillDescp" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 344.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 344, 100 )
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+
+[node name="Space2" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 283.0
+margin_right = 542.0
+margin_bottom = 333.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 343.0
+margin_right = 542.0
+margin_bottom = 375.0
+custom_fonts/font = SubResource( 1 )
+shortcut = SubResource( 8 )
+text = "Press 'SPACE' to Continue"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 385.0
+margin_right = 542.0
+margin_bottom = 417.0
+custom_fonts/font = SubResource( 3 )
+shortcut = SubResource( 10 )
+text = "Press 'ESC' to Back to Main Menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

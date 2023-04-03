@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/knight-vision-font/KnightVision-p7Ezy.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/world/Defeated.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 65
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=4]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
+[node name="Defeated" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.462745 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 294.0
+margin_top = 163.0
+margin_right = 730.0
+margin_bottom = 436.0
+custom_constants/separation = 10
+
+[node name="DefeatedLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+margin_right = 436.0
+margin_bottom = 143.0
+rect_min_size = Vector2( 300, 143 )
+custom_fonts/bold_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][b]Jeanne is'DEAD"
+text = "Jeanne is'DEAD"
+
+[node name="Tips" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+margin_top = 153.0
+margin_right = 436.0
+margin_bottom = 203.0
+rect_min_size = Vector2( 300, 50 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Tips: Strategize well, wait before act and think before them"
+text = "Tips: Strategize well, wait before act and think before them"
+
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 213.0
+margin_right = 436.0
+margin_bottom = 273.0
+rect_min_size = Vector2( 400, 60 )
+custom_fonts/font = SubResource( 3 )
+shortcut = SubResource( 5 )
+text = "Press 'ESC' to Back to main menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

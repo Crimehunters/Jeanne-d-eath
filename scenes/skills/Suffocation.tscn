@@ -1,0 +1,178 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/skills/suffocation_effect.png" type="Texture" id=1]
+[ext_resource path="res://sprites/skills/suffocation_droplet.png" type="Texture" id=2]
+[ext_resource path="res://scripts/skills/Suffocation.gd" type="Script" id=3]
+[ext_resource path="res://sound/fx/Sound/SoundFX/liquid-nitrogen-33726.mp3" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Active"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SuffocationEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SuffocationDroplet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SuffocationDroplet2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 0, 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SuffocationDroplet3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 0, 1, 2 ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("FX")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SuffocationEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SuffocationDroplet3:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SuffocationDroplet2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SuffocationDroplet:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 25.0
+height = 276.0
+
+[node name="Suffocation" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="SuffocationDroplet" type="Sprite" parent="."]
+modulate = Color( 0.823529, 0.529412, 0.839216, 1 )
+position = Vector2( 66, 6 )
+scale = Vector2( 1.42866, 1.42866 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 1
+
+[node name="SuffocationDroplet2" type="Sprite" parent="."]
+modulate = Color( 0.823529, 0.529412, 0.839216, 1 )
+position = Vector2( -44, 5.00002 )
+scale = Vector2( 2.04107, 2.04107 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 2
+
+[node name="SuffocationDroplet3" type="Sprite" parent="."]
+modulate = Color( 0.823529, 0.529412, 0.839216, 1 )
+position = Vector2( 17, 3 )
+scale = Vector2( 0.995634, 0.995634 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="SuffocationEffect" type="Sprite" parent="."]
+position = Vector2( 0, -71 )
+scale = Vector2( 6.12554, 2.27901 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 4
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Active = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="HitboxEffect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxEffect"]
+position = Vector2( 9, 10 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="FX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = true
+
+[connection signal="body_entered" from="HitboxEffect" to="." method="_on_HitboxEffect_body_entered"]
+[connection signal="body_exited" from="HitboxEffect" to="." method="_on_HitboxEffect_body_exited"]

@@ -1,0 +1,455 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://sprites/Envi/decorative.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Envi/40Zk2Z.png" type="Texture" id=2]
+[ext_resource path="res://sound/bgm/2020-11-19_-_Final_Boss_-_David_Fesliyan.mp3" type="AudioStream" id=3]
+[ext_resource path="res://scenes/PlayerHP.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/PlayerSkillSlot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/menu/Pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/world/World.gd" type="Script" id=16]
+[ext_resource path="res://scenes/Boss5.tscn" type="PackedScene" id=17]
+
+[sub_resource type="TileSet" id=6]
+0/name = "40Zk2Z.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 32, 704, 832 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "40Zk2Z.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 256, 864, 448, 96 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "40Zk2Z.png 2"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 704, 416, 64, 544 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "40Zk2Z.png 3"
+3/texture = ExtResource( 2 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 192, 480, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "40Zk2Z.png 4"
+4/texture = ExtResource( 2 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 192, 480, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "40Zk2Z.png 5"
+5/texture = ExtResource( 2 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 160, 480, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "40Zk2Z.png 6"
+6/texture = ExtResource( 2 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 160, 480, 32, 64 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "40Zk2Z.png 7"
+7/texture = ExtResource( 2 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 192, 480, 32, 64 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "40Zk2Z.png 8"
+8/texture = ExtResource( 2 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 416, 544, 64, 64 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "40Zk2Z.png 9"
+9/texture = ExtResource( 2 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 448, 416, 64, 64 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "decorative.png 10"
+10/texture = ExtResource( 1 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 128, 64, 64 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "decorative.png 11"
+11/texture = ExtResource( 1 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 192, 64, 64 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "decorative.png 12"
+12/texture = ExtResource( 1 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 64, 16, 16, 48 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "40Zk2Z.png 13"
+13/texture = ExtResource( 2 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 560, 128, 32, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
+14/name = "40Zk2Z.png 14"
+14/texture = ExtResource( 2 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 576, 192, 64, 64 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shape_offset = Vector2( 0, 0 )
+14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+14/shape_one_way = false
+14/shape_one_way_margin = 0.0
+14/shapes = [  ]
+14/z_index = 0
+
+[sub_resource type="TileSet" id=7]
+0/name = "decorative.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 80, 64, 32, 48 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 30.4375, 295.125 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 548.75, 10 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 30.25, 412.5 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 73.75, 330.5 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 262.25, 10 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 70.75, 35 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 32.5, 89.5 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 19, 420.25 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 54.5, 162.25 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 28.75, 45.5 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 529.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 5.5, 610 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 56.75, 117.5 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 59, 118.75 )
+
+[sub_resource type="CapsuleShape2D" id=21]
+radius = 30.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 24.5, 43.75 )
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 23.5, 43.5 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 146.5, 198 )
+
+[sub_resource type="CircleShape2D" id=25]
+radius = 22.0907
+
+[sub_resource type="CapsuleShape2D" id=26]
+radius = 16.0
+height = 26.0
+
+[node name="World" type="Node2D"]
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 2118.0 ],
+"_edit_vertical_guides_": [ 1737.0 ]
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 2.26843, 2.26843 )
+tile_set = SubResource( 6 )
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 0, 0, 64, 64, 64, 64 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 11, 536870926, 0, 65547, 536870926, 0, 131083, 536870926, 0, 196611, 4, 0, 196612, 4, 0, 196613, 4, 0, 196619, 536870926, 0, 262147, 4, 0, 262148, 4, 0, 262149, 4, 0, 262150, 536870915, 0, 262155, 536870926, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327691, 536870926, 0, 393219, 4, 0, 393220, 4, 0, 393221, 536870921, 0, 393222, 536870921, 0, 393227, 2, 0, 589832, 536870916, 0, 655366, 536870916, 0, 655367, 536870916, 0, 655368, 536870916, 0, 655369, 536870916, 0, 655370, 536870916, 0, 720902, 536870916, 0, 720903, 536870916, 0, 720904, 536870916, 0, 720905, 536870916, 0, 720906, 536870916, 0, 786438, 536870921, 0, 786439, 536870921, 0, 786440, 536870921, 0, 786441, 536870921, 0, 786442, 536870916, 0, 851968, 536870926, 0, 851969, 536870926, 0, 851970, 536870926, 0, 851971, 536870926, 0, 851972, 1, 0 )
+
+[node name="TileMap" type="TileMap" parent="TileMap"]
+position = Vector2( -552, -864 )
+scale = Vector2( 3.65976, 3.56539 )
+tile_set = SubResource( 7 )
+format = 1
+tile_data = PoolIntArray( 327683, 536870912, 0 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="PlayerHP" parent="UI" instance=ExtResource( 4 )]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource( 7 )]
+
+[node name="SkillSlot" parent="UI" instance=ExtResource( 5 )]
+margin_left = -71.0
+margin_top = 349.0
+margin_right = -71.0
+margin_bottom = 349.0
+rect_scale = Vector2( 0.500724, 0.500724 )
+
+[node name="MainSort" type="YSort" parent="."]
+
+[node name="Characters" type="YSort" parent="MainSort"]
+
+[node name="Player" parent="MainSort/Characters" instance=ExtResource( 6 )]
+position = Vector2( 118, 417 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="MainSort/Characters/Player"]
+remote_path = NodePath("../../../../Camera2D")
+
+[node name="Boss" parent="MainSort/Characters" instance=ExtResource( 17 )]
+position = Vector2( 1583, 1624 )
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( -35, 300 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 561, 306 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1107.75, 435.5 )
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 78, 927.5 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 384.75, 1256 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 755.75, 1333 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 721, 1497 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 646, 1670.75 )
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 475.5, 840.25 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1379.75, 1036.5 )
+shape = SubResource( 16 )
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1208.5, 2117 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1751.5, 1500 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1670.75, 1392.5 )
+shape = SubResource( 19 )
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1670, 1827.75 )
+shape = SubResource( 20 )
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1271, 896 )
+shape = SubResource( 21 )
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1197.5, 821.75 )
+shape = SubResource( 22 )
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1342, 895.5 )
+shape = SubResource( 23 )
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1583.5, 1009 )
+shape = SubResource( 24 )
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1426, 1200 )
+shape = SubResource( 25 )
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 1486, 1273 )
+shape = SubResource( 26 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 118, 417 )
+scale = Vector2( 2, 2 )
+current = true
+zoom = Vector2( 0.8, 0.8 )
+limit_left = 0
+limit_top = 0
+limit_right = 1740
+limit_bottom = 2100
+limit_smoothed = true
+
+[connection signal="atk" from="MainSort/Characters/Player" to="MainSort/Characters/Boss" method="_on_Player_atk"]
+[connection signal="defeated" from="MainSort/Characters/Player" to="." method="_on_Player_defeated"]
+[connection signal="hit" from="MainSort/Characters/Player" to="UI/PlayerHP" method="_on_Player_hit"]
+[connection signal="position_broadcast" from="MainSort/Characters/Player" to="MainSort/Characters/Boss" method="_on_Player_position_broadcast"]
+[connection signal="atk" from="MainSort/Characters/Boss" to="MainSort/Characters/Player" method="_on_Boss_atk"]
+[connection signal="defeated" from="MainSort/Characters/Boss" to="." method="_on_Boss_defeated"]

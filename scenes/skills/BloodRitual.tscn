@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/skills/bloodritual_effect.png" type="Texture" id=1]
+[ext_resource path="res://scripts/skills/BloodRitual.gd" type="Script" id=2]
+[ext_resource path="res://sound/fx/Sound/SoundFX/heartbeat-sound-effect-111218.mp3" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Active"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BloodritualEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("FX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BloodritualEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[node name="BloodRitual" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BloodritualEffect" type="Sprite" parent="."]
+position = Vector2( 0, -18 )
+scale = Vector2( 0.071692, 0.071692 )
+texture = ExtResource( 1 )
+hframes = 6
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Active = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="FX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
